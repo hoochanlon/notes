@@ -1,0 +1,216 @@
+---
+title: Demo  首页/默认页
+description: 这是第一个演示页面的首页，包含各种测试内容
+---
+
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Banner } from 'fumadocs-ui/components/banner';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { GithubInfo } from 'fumadocs-ui/components/github-info';
+import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import { HomeIcon } from 'lucide-react';
+import { GraphView } from '@/components/graph-view';
+import { buildGraph } from '@/lib/build-graph';
+
+
+
+<Banner variant="rainbow">Hello World</Banner>
+
+
+## 横幅如上所示
+
+当有横幅时，不管横幅在哪个位置，都会挤占 nav 的空间
+
+## 内联目录
+
+<InlineTOC items={toc} />
+
+
+## 手风琴折叠内容
+
+<Accordions>
+<Accordion title="My Title" id="my-title">
+
+My Content
+
+</Accordion>
+</Accordions>
+
+
+## 文件夹显示
+
+
+<Files>
+  <Folder name="app" defaultOpen>
+    <File name="layout.tsx" />
+    <File name="page.tsx" />
+    <File name="global.css" />
+  </Folder>
+  <Folder name="components">
+    <File name="button.tsx" />
+    <File name="tabs.tsx" />
+    <File name="dialog.tsx" />
+  </Folder>
+  <File name="package.json" />
+</Files>
+
+
+## github 仓库信息
+
+<GithubInfo
+  owner="hoochanlon"
+  repo="hoochanlon"
+/>
+
+
+
+
+<Steps>
+<Step>
+
+### Hello World
+
+</Step>
+
+<Step>
+
+### Hello World
+
+</Step>
+</Steps>
+
+
+## 定位栏
+
+<Tabs items={['Javascript', 'Rust', 'C++']}>
+  <Tab value="Javascript">Javascript is weird</Tab>
+  <Tab value="Rust">Rust is fast</Tab>
+  <Tab id="tab-cpp" value="C++">
+    `Hello World`
+  </Tab>
+</Tabs>
+
+## 图片放大镜
+
+![](https://images.sonurai.com/SaltDesert.jpg)
+
+
+![](https://cdn.jsdelivr.net/gh/hoochanlon/picx-images-hosting@refs/heads/master/special/hello.png)
+
+## 数学公式
+
+Inline: $$c = \pm\sqrt{a^2 + b^2}$$
+
+```math
+c = \pm\sqrt{a^2 + b^2}
+```
+
+
+## 提示框
+
+
+<Callout>Hello World</Callout>
+
+<Callout title="Title">Hello World</Callout>
+
+<Callout title="Title" type="error">Hello World</Callout>
+
+
+## 卡片
+
+
+<Cards>
+  <Card icon={<HomeIcon />} href="/" title="Home">
+    You can include icons too.
+  </Card>
+</Cards>
+
+
+## 图表
+
+
+<Mermaid
+  chart="
+graph TD;
+subgraph AA [Consumers]
+A[Mobile app];
+B[Web app];
+C[Node.js client];
+end
+subgraph BB [Services]
+E[REST API];
+F[GraphQL API];
+G[SOAP API];
+end
+Z[GraphQL API];
+A --> Z;
+B --> Z;
+C --> Z;
+Z --> E;
+Z --> F;
+Z --> G;"
+/>
+
+
+## 代码块
+
+这是 Shiki Twoslash 的语法标记，主要用于技术文档中的代码展示。
+
+```
+## 常用语法速查
+
+### 差异显示
+- `// [!code ++]`      - 添加行（绿色）
+- `// [!code --]`      - 删除行（红色）
+- `// [!code ++:3]`    - 添加3行
+- `// [!code --:2]`    - 删除2行
+
+### 高亮和聚焦
+- `// [!code focus]`   - 聚焦此行
+- `// [!code highlight]` - 黄色高亮
+- `// [!code hl:5-10]` - 高亮5-10行
+
+### 注释提示
+- `// [!code tip]`     - 提示信息
+- `// [!code warning]` - 警告信息
+- `// [!code error]`   - 错误信息
+- `// [!code success]` - 成功信息
+
+### 其他
+- `// [!code range:1-5]` - 只显示1-5行
+- `// [!code skip]`      - 跳过此行
+- `tab="filename"`      - 标签页标题
+```
+
+```js
+// 原始代码
+function add(a, b) {
+  return a + b;
+}
+
+// 添加新功能
+function add(a, b) {
+  console.log('计算加法'); // [!code ++]
+  return a + b;
+}
+
+// 删除旧代码
+function oldMethod() { // [!code --]
+  // 已废弃 // [!code --]
+} // [!code --]
+
+// 高亮重要部分
+function calculateTotal(items) {
+  let total = 0;
+  for (let item of items) {
+    total += item.price; // [!code highlight]
+  }
+  return total; // [!code focus]
+}
+```
+
+## GraphView 
+
+<GraphView graph={buildGraph()} />

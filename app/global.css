@@ -1,0 +1,142 @@
+@import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/DingTalkSan/result.css');
+@import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/quicksand/quicksand.light-regular.otf');
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/ocean.css';
+@import 'fumadocs-ui/css/preset.css';
+
+
+.font-tesla,
+.fd-brand-title,
+.fd-nav-title,
+.fd-logo,
+.fd-header__brand {
+  font-family: 'quicksand.light-regular';
+  letter-spacing: 0.04em;
+}
+
+/* 精确匹配整个class字符串 */
+a[class="inline-flex items-center gap-2.5 font-semibold"] {
+  font-family: 'quicksand.light-regular';
+  font-size: 20px;
+}
+
+/* 防止样式闪烁：设置初始背景色 */
+html {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+
+/* 增强版行号样式 */
+.shiki:has(.line:nth-child(3)) {
+  counter-reset: line;
+  font-size: 1.2rem;
+}
+
+/* 行号背景仅作用于代码区域，不影响标题 */
+/* 使用与代码块背景相同的变量颜色 */
+.shiki:has(.line:nth-child(3)) pre {
+  background: linear-gradient(90deg,
+    hsl(var(--muted) / 0.3) 0,
+    hsl(var(--muted) / 0.3) 3rem,  /* 缩小到 3rem */
+    transparent 3rem
+  );
+  margin: 0;
+  position: relative;
+}
+
+/* 添加行号与代码之间的实线分隔 */
+/* 浅色主题：使用深灰色，与背景色明显区分 */
+.shiki:has(.line:nth-child(3)) pre::after {
+  content: '';
+  position: absolute;
+  left: 3rem;  /* 调整到 3rem */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #d1d5db;  /* 浅色主题下的深灰色，明显可见 */
+  z-index: 1;
+}
+
+/* 深色主题：使用浅灰色，与背景色明显区分 */
+.dark .shiki:has(.line:nth-child(3)) pre::after {
+  background: #6b7280;  /* 深色主题下的浅灰色，明显可见 */
+}
+
+.shiki:has(.line:nth-child(3)) .line {
+  /* 行号在分隔线左侧，代码在分隔线右侧 */
+  padding-left: 3.1rem;  /* 调整到 3.1rem，稍微缩小 */
+  position: relative;
+  /* 关键修复：使用正确的行高和高度计算 */
+  line-height: 1.6em; /* 使用 em 单位，与字体大小保持一致 */
+  min-height: 1.6em;  /* 确保最小高度与行高一致 */
+  font-size: 1.2rem;
+}
+
+.shiki:has(.line:nth-child(3)) .line::before {
+  counter-increment: line;
+  content: counter(line);
+  position: absolute;
+  /* 行号位置：在分隔线（3rem）的左侧，右对齐 */
+  left: 0.5rem;  /* 稍微缩小左边距 */
+  width: 2.0rem;  /* 稍微缩小宽度 */
+  text-align: right;
+  padding-right: 0.1rem;  /* 在分隔线左侧留出小间距 */
+  color: #6b7280;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-family: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace;
+  font-weight: 400;
+
+  /* 关键修复：使用相同的行高和垂直居中 */
+  line-height: 1.6em;  /* 与 .line 保持一致 */
+  height: 1.6em;      /* 设置明确的高度 */
+  top: 50%;           /* 使用 top 和 transform 实现精确居中 */
+  transform: translateY(-50%);
+  box-sizing: border-box;
+}
+
+/* 代码块整体字体大小调整 */
+.shiki {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* 对于1-2行的代码块，保持简洁 */
+.shiki:not(:has(.line:nth-child(3))) {
+  padding: 1rem 1.2rem;
+  border-radius: 0.375rem;
+  background: transparent !important;
+  font-size: 1.2rem;
+}
+
+/* 代码内容的直接样式覆盖 */
+.shiki .line,
+.shiki code,
+.shiki span {
+  font-size: 1.2rem !important;
+  font-family: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace !important;
+}
+
+/* 行内代码字号提升（非代码块） */
+:not(pre) > code {
+  font-size: 1rem;
+  font-family: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace;
+}
+
+/* 深色主题优化 - 使用相同的变量颜色 */
+.dark .shiki:has(.line:nth-child(3)) pre {
+  background: linear-gradient(90deg,
+    hsl(var(--muted) / 0.3) 0,
+    hsl(var(--muted) / 0.3) 3rem,  /* 缩小到 3rem */
+    transparent 3rem
+  );
+}
+
+.dark .shiki:has(.line:nth-child(3)) .line::before {
+  color: #9ca3af;
+}

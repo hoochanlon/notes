@@ -1,0 +1,108 @@
+---
+title: Astro-Starlight 简要配置
+---
+
+
+## 自定义样式
+
+* [自定义样式](https://starlight.astro.build/zh-cn/guides/css-and-tailwind/)
+* [编辑按钮设置](https://starlight.astro.build/zh-cn/guides/customization/#%E7%BC%96%E8%BE%91%E9%93%BE%E6%8E%A5)
+* [本地化](https://starlight.astro.build/guides/i18n/#use-a-root-locale)
+* [Starlight Image Zoom](https://starlight-image-zoom.vercel.app/getting-started/)
+
+## front-matter 可省略部分
+
+https://starlight.astro.build/zh-cn/reference/frontmatter/#_top
+
+在 astro blog 中 front-matter 中的 `description` 是不能被省略的，而在 astro starlight 是可以被省略的。
+
+
+```mdx title="\src\content\docs\index.mdx"
+---
+title: Starlight Notes
+description: 基于 Astro Starlight 构建的个人笔记文档
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: 基于 Astro Starlight 构建的个人笔记文档
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: 进入笔记
+      link: /astro-starlight/example/
+      icon: right-arrow
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+---
+```
+
+
+## 代码块
+
+### 代码显示行数
+
+参考：https://siaofei.github.io/note/demo-expressive-code-syntax
+
+
+```
+pnpm add @expressive-code/plugin-line-numbers
+```
+
+创建 ec.config.mjs
+
+```mjs title="./ec.config.mjs"
+import { 
+  latte, frappe, macchiato, mocha 
+} from '@catppuccin/vscode'
+
+import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections'
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import { defineEcConfig } from 'astro-expressive-code'
+
+export default defineEcConfig({
+  plugins: [
+    pluginLineNumbers(),
+    pluginCollapsibleSections()
+  ],
+
+  // 同时指定亮色和暗色主题（顺序很重要：light, dark）
+  themes: [latte, mocha],           // 最常用：latte（亮） + mocha（暗）
+  // 或者你喜欢其他暗色口味：
+  // themes: [latte, frappe],
+  // themes: [latte, macchiato],
+
+  // 可选：如果你想让 Shiki 也用同样的主题（推荐）
+  themeCssSelector: (theme) => theme.type === 'dark' ? '[data-theme="dark"]' : '[data-theme="light"]',
+
+  styleOverrides: {
+    // 这里可以微调边框、代码文字大小等
+    borderRadius: '0.5rem',
+    codeFontSize: '0.95rem',
+    // ...
+  },
+})
+```
+
+在 `showLineNumbers ins={3,5-6} ` 位置处可更改侧边栏文章板块、文章标识、文章路由等信息。
+
+
+```js title=".\astro.config.mjs" showLineNumbers ins={3,5-6} 
+sidebar: [
+	{
+	 label: 'Astro-Strlight',
+	 items: [
+	    // Each item here is one entry in the navigation menu.
+	    { label: 'Astro-Strlight简要文档配置', slug: 'astro-starlight/example' },
+	  ],
+  },
+ {
+	 label: 'Reference',
+	 autogenerate: { directory: 'reference' },
+ },
+],
+```
+
+## 旁白
+
+https://starlight.astro.build/zh-cn/components/asides/

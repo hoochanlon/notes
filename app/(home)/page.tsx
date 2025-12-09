@@ -1,0 +1,114 @@
+'use client';
+
+import Link from 'next/link';
+import { ArrowRight, ExternalLink, Github, Book, Code, Brain, Clock, Star,FileText } from 'lucide-react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+
+
+export default function HomePage() {
+
+  return (
+    <div className="flex flex-col min-h-[95vh] bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
+      {/* 英雄区域 */}
+      <section className="flex flex-col items-center justify-center py-12 px-4 text-center flex-grow">
+        {/* 头像图片 */}
+        <motion.div 
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <Image
+              src="https://cdn.jsdelivr.net/gh/hoochanlon/picx-images-hosting@refs/heads/master/special/quan-ci-fang.png"
+              alt="Hoochanlon"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 768px) 128px, 160px"
+            />
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          className="max-w-3xl mx-auto space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-gray-600 dark:to-gray-400 font-tesla">
+            Hoochanlon's Notes
+          </h1>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            个人笔记
+          </p>
+          
+          {/* 按钮组 */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+
+            <Link
+              href="https://hoochanlon.moe/"
+              target="_blank"
+              rel="noopener noreferrer"
+               className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              >
+              <ExternalLink className="w-5 h-5" />
+              个人主页
+            </Link>
+            
+            <Link
+              href="/notes/essay"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+            >
+              浏览笔记
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+
+            {/* <Link
+              href="https://github.com/hoochanlon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gray-100 dark:bg-gray-800 text-foreground rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
+            >
+              <Github className="w-5 h-5" />
+              GitHub
+            </Link> */}
+          </div>
+        </motion.div>
+      </section>
+
+
+
+      {/* 页脚区域 */}
+      <footer className="py-6 px-4 border-t border-border">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} Hoochanlon
+          </div>
+          <div className="flex items-center gap-6">
+            <Link
+              href="https://blog.hoochanlon.moe/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              个人博客
+            </Link>
+            <Link
+              href="https://github.com/hoochanlon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Github className="w-4 h-4" />
+              GitHub
+            </Link>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
