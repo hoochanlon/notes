@@ -3,8 +3,10 @@ import { createMDX } from 'fumadocs-mdx/next';
 const withMDX = createMDX();
 
 
-// 本地希望根路径直接可访问，默认空；如部署到子路径，再设置 NEXT_PUBLIC_BASE_PATH
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+// 开发默认根路径；生产（或设置了 NEXT_PUBLIC_BASE_PATH）走子路径
+const basePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (process.env.NODE_ENV === 'production' ? '/memos' : '');
 
 /** @type {import('next').NextConfig} */
 const config = {
