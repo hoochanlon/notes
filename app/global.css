@@ -6,10 +6,7 @@
 @import 'fumadocs-ui/css/preset.css';
 
 
-.font-tesla,
-.fd-brand-title,
-.fd-nav-title,
-.fd-logo,
+
 .fd-header__brand {
   font-family: 'quicksand.light-regular';
   letter-spacing: 0.04em;

@@ -40,7 +40,7 @@ export default function HomePage() {
             Hoochanlon's Memos
           </h1>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            个人备忘录
+            个人备忘录：随笔、记录、归档。
           </p>
           
           {/* 按钮组 */}
