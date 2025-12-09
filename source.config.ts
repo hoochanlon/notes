@@ -9,7 +9,7 @@ import remarkMath from 'remark-math';
 import { remarkImage } from 'fumadocs-core/mdx-plugins';
 import { z } from 'zod';
 
-// 扩展 frontmatter schema：可选 slug 与 lastUpdated
+// 扩展 frontmatter schema：可选 slug、lastUpdated、toc 和 footer
 const slugSchema = z.object({
   // slug 可以是字符串（单个路径段）或字符串数组（多个路径段）
   slug: z.union([z.string(), z.array(z.string())]).optional(),
@@ -17,6 +17,10 @@ const slugSchema = z.object({
   lastUpdated: z.coerce.date().optional(),
   // 发布时间
   publishedAt: z.coerce.date().optional(),
+  // 是否显示目录
+  toc: z.boolean().optional(),
+  // 是否显示页脚
+  footer: z.boolean().optional(),
 });
 const customFrontmatterSchema = frontmatterSchema.merge(slugSchema);
 

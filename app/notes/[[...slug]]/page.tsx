@@ -16,21 +16,31 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
   if (!page) notFound();
 
   const MDX = page.data.body;
-  const lastUpdated =
-    page.data.lastUpdated instanceof Date
-      ? page.data.lastUpdated
-      : page.data.lastUpdated
-        ? new Date(page.data.lastUpdated)
-        : undefined;
-  const publishedAt =
-    page.data.publishedAt instanceof Date
-      ? page.data.publishedAt
-      : page.data.publishedAt
-        ? new Date(page.data.publishedAt)
-        : undefined;
+  const lastUpdated = page.data.lastUpdated instanceof Date
+    ? page.data.lastUpdated
+    : page.data.lastUpdated
+      ? new Date(page.data.lastUpdated)
+      : undefined;
+  const publishedAt = page.data.publishedAt instanceof Date
+    ? page.data.publishedAt
+    : page.data.publishedAt
+      ? new Date(page.data.publishedAt)
+      : undefined;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage 
+      toc={page.data.toc} 
+      full={page.data.full}
+      tableOfContent={{
+        enabled: page.data.toc !== false
+      }}
+      tableOfContentPopover={{
+        enabled: page.data.toc !== false
+      }}
+      footer={{
+        enabled: page.data.footer !== false
+      }}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       {(publishedAt || lastUpdated) && (
         <p className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2">
