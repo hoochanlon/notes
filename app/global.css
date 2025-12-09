@@ -1,4 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/DingTalkSan/result.css');
 @import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/quicksand/quicksand.light-regular.otf');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 @import 'tailwindcss';
@@ -120,6 +119,26 @@ html.dark {
   font-family: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace !important;
 }
 
+
+/* TOC 区域字号提升 */
+
+#toc-title {
+  font-size: 0 !important; /* 隐藏原文本 */
+}
+#toc-title::after {
+  content: '目录';
+  font-size: 15px;
+}
+
+#nd-toc,
+#nd-toc * {
+  font-size: 15px;
+}
+
+#toc-title svg {
+  width: 16px;
+  height: 16px;
+}
 /* 行内代码字号提升（非代码块） */
 :not(pre) > code {
   font-size: 1rem;
