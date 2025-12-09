@@ -17,7 +17,7 @@ export async function GET(
     <DefaultImage
       title={page.data.title}
       description={page.data.description}
-      site="Hoochanlon's Notes"
+      site="My memos"
     />,
     {
       width: 1200,

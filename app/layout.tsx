@@ -12,8 +12,8 @@ const metadataBase = process.env.NODE_ENV === 'production'
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "Hoochanlon's Notes",
-  description: "个人笔记：随笔、记录、归档。",
+  title: 'My memos',
+  description: '个人备忘录：随笔、记录、归档。',
   // 在静态导出模式下，使用 public 目录中的图标
   icons: {
     icon: `${basePath}/icon.svg`,

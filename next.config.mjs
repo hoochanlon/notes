@@ -1,12 +1,9 @@
-import { fileURLToPath } from 'node:url';
 import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
 
-// basePath 置空，使用根路径部署
-const basePath = '';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -19,7 +16,9 @@ const config = {
   // 添加尾部斜杠，有助于静态文件生成
   trailingSlash: true,
   // 设置环境变量，供客户端使用
-  // 若有需要，可恢复 basePath 并同步 env
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     // 静态导出模式下必须禁用图片优化
     unoptimized: true,
@@ -32,10 +31,18 @@ const config = {
       },
     ],
   },
-  turbopack: {
-    // 显式设置项目根目录，避免因上级锁文件导致的根推断警告
-    root: __dirname,
-  },
+  // 开发服务器性能优化
+  ...(process.env.NODE_ENV === 'development' && {
+    // 减少开发时的编译范围
+    experimental: {
+      // 优化 Turbopack 性能（如果使用）
+      turbo: {
+        resolveAlias: {
+          // 可以添加别名优化
+        },
+      },
+    },
+  }),
 };
 
 export default withMDX(config);

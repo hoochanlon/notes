@@ -37,10 +37,10 @@ export default function HomePage() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-gray-600 dark:to-gray-400 font-tesla">
-            Hoochanlon's Notes
+            Hoochanlon's Memos
           </h1>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            个人笔记
+            个人备忘录
           </p>
           
           {/* 按钮组 */}
@@ -60,7 +60,7 @@ export default function HomePage() {
               href="/notes/essay"
               className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105"
             >
-              浏览笔记
+              浏览内容
               <ArrowRight className="w-5 h-5" />
             </Link>
 

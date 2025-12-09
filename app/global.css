@@ -1,14 +1,14 @@
+@import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/DingTalkSan/result.css');
 @import url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/quicksand/quicksand.light-regular.otf');
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/ocean.css';
 @import 'fumadocs-ui/css/preset.css';
 
 
-@font-face {
-  font-family: 'Tesla';
-  src:  url('https://cdn.jsdelivr.net/gh/hoochanlon/fonts@main/assets/TESLA-Regular/TESLA.ttf') format('truetype');
-}
-
+.font-tesla,
+.fd-brand-title,
+.fd-nav-title,
+.fd-logo,
 .fd-header__brand {
   font-family: 'quicksand.light-regular';
   letter-spacing: 0.04em;
