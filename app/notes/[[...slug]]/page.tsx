@@ -16,11 +16,22 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
   if (!page) notFound();
 
   const MDX = page.data.body;
+  const lastUpdated =
+    page.data.lastUpdated instanceof Date
+      ? page.data.lastUpdated
+      : page.data.lastUpdated
+        ? new Date(page.data.lastUpdated)
+        : undefined;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}tableOfContent={{style: 'clerk',}}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
+      {lastUpdated && (
+        <p className="text-sm text-fd-muted-foreground">
+          最近更新：{lastUpdated.toLocaleDateString('zh-CN')}
+        </p>
+      )}
       <DocsBody>
         <MDX
           components={getMDXComponents({

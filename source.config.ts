@@ -9,11 +9,12 @@ import remarkMath from 'remark-math';
 import { remarkImage } from 'fumadocs-core/mdx-plugins';
 import { z } from 'zod';
 
-// 扩展 frontmatter schema 以支持可选的 slug 字段
-// slug 可以是字符串（单个路径段）或字符串数组（多个路径段）
-// 在 zod v4 中，使用 merge 方法而不是 extend
+// 扩展 frontmatter schema：可选 slug 与 lastUpdated
 const slugSchema = z.object({
+  // slug 可以是字符串（单个路径段）或字符串数组（多个路径段）
   slug: z.union([z.string(), z.array(z.string())]).optional(),
+  // 手动指定最近更新日期，ISO 字符串或可被 Date 解析的字符串
+  lastUpdated: z.coerce.date().optional(),
 });
 const customFrontmatterSchema = frontmatterSchema.merge(slugSchema);
 
