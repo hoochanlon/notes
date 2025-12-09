@@ -15,6 +15,8 @@ const slugSchema = z.object({
   slug: z.union([z.string(), z.array(z.string())]).optional(),
   // 手动指定最近更新日期，ISO 字符串或可被 Date 解析的字符串
   lastUpdated: z.coerce.date().optional(),
+  // 发布时间
+  publishedAt: z.coerce.date().optional(),
 });
 const customFrontmatterSchema = frontmatterSchema.merge(slugSchema);
 

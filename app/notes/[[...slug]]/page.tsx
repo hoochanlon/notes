@@ -22,16 +22,34 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
       : page.data.lastUpdated
         ? new Date(page.data.lastUpdated)
         : undefined;
+  const publishedAt =
+    page.data.publishedAt instanceof Date
+      ? page.data.publishedAt
+      : page.data.publishedAt
+        ? new Date(page.data.publishedAt)
+        : undefined;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}tableOfContent={{style: 'clerk',}}>
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      {lastUpdated && (
-        <p className="text-sm text-fd-muted-foreground">
-          最近更新：{lastUpdated.toLocaleDateString('zh-CN')}
+      {(publishedAt || lastUpdated) && (
+        <p className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2">
+          {publishedAt && (
+            <span className="inline-flex items-center gap-1">
+              <i className="fa-solid fa-calendar-day" />
+              发布时间：{publishedAt.toLocaleDateString('zh-CN')}
+            </span>
+          )}
+          {publishedAt && lastUpdated && <span className="mx-1">|</span>}
+          {lastUpdated && (
+            <span className="inline-flex items-center gap-1">
+              <i className="fa-regular fa-clock" />
+              最近更新：{lastUpdated.toLocaleDateString('zh-CN')}
+            </span>
+          )}
         </p>
       )}
+      <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
         <MDX
           components={getMDXComponents({
