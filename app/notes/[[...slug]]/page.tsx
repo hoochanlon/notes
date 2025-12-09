@@ -30,7 +30,7 @@ export default async function Page(props: PageProps<'/notes/[[...slug]]'>) {
         : undefined;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}tableOfContent={{style: 'clerk',}}>
+    <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
       {(publishedAt || lastUpdated) && (
         <p className="text-[15px] leading-6 text-fd-muted-foreground flex flex-wrap items-center gap-2">
