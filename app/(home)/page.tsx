@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { ArrowRight, ExternalLink, Github, Book, Code, Brain, Clock, Star,FileText } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { SiteFooter } from '@/components/site-footer';
 
 export default function HomePage() {
-
   return (
-    <div className="flex flex-col min-h-[95vh] bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
       {/* 英雄区域 */}
-      <section className="flex flex-col items-center justify-center py-12 px-4 text-center flex-grow">
+      <section className="flex flex-col items-center justify-center py-12 px-4 text-center flex-1">
         {/* 头像图片 */}
         <motion.div 
           className="flex justify-center mb-8"
@@ -77,36 +77,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-
-
-      {/* 页脚区域 */}
-      <footer className="py-6 px-4 border-t border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Hoochanlon
-          </div>
-          <div className="flex items-center gap-6">
-            <Link
-              href="https://blog.hoochanlon.moe/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              个人博客
-            </Link>
-            <Link
-              href="https://github.com/hoochanlon"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

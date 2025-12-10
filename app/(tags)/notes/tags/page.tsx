@@ -39,33 +39,38 @@ export default async function TagsPage() {
   );
 
   return (
-    <section className="w-full">
-
-      <h1 className="text-3xl font-semibold tracking-tight mb-2">所有标签</h1>
-      <p className="text-fd-muted-foreground mb-8">浏览全部标签，快速跳转到相关笔记。</p>
-      {sortedTags.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-fd-muted-foreground text-lg">暂无标签</p>
-        </div>
-      ) : (
-        <div className="flex flex-wrap gap-4">
-          {sortedTags.map(([tag, pages]) => (
-            <Link
-              key={tag}
-              href={`/notes/tags/${encodeURIComponent(tag)}/`}
-              className="group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-fd-border bg-fd-card text-fd-card-foreground hover:border-fd-primary hover:bg-fd-primary/10 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 no-underline"
-            >
-              <span className="font-semibold text-base text-fd-foreground group-hover:text-fd-primary transition-colors">
-                # {tag}
-              </span>
-              <span className="inline-flex items-center justify-center min-w-[28px] h-7 px-2 text-xs font-bold rounded-full bg-fd-primary/20 text-fd-primary group-hover:bg-fd-primary group-hover:text-fd-primary-foreground transition-colors">
-                {pages.length}
-              </span>
-            </Link>
-          ))}
-        </div>
-      )}
-    </section>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-12">
+        <section className="w-full space-y-8">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-semibold tracking-tight">所有标签</h1>
+            <p className="text-fd-muted-foreground">浏览全部标签，快速跳转到相关笔记。</p>
+          </div>
+          {sortedTags.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-fd-muted-foreground text-lg">暂无标签</p>
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-4">
+              {sortedTags.map(([tag, pages]) => (
+                <Link
+                  key={tag}
+                  href={`/notes/tags/${encodeURIComponent(tag)}/`}
+                  className="group relative inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-fd-border bg-fd-card text-fd-card-foreground hover:border-fd-primary hover:bg-fd-primary/10 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 no-underline"
+                >
+                  <span className="font-semibold text-base text-fd-foreground group-hover:text-fd-primary transition-colors">
+                    # {tag}
+                  </span>
+                  <span className="inline-flex items-center justify-center min-w-[28px] h-7 px-2 text-xs font-bold rounded-full bg-fd-primary/20 text-fd-primary group-hover:bg-fd-primary group-hover:text-fd-primary-foreground transition-colors">
+                    {pages.length}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
+    </div>
   );
 }
 
