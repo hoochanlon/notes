@@ -42,8 +42,12 @@ function customSlugsPlugin(): LoaderPlugin {
             
             content.slugs = slugArray;
             
-            // 获取文件路径（去掉 content/notes/ 前缀和 /index.mdx 后缀）
-            const filePath = file.replace(/^content\/notes\//, '').replace(/\/index\.(mdx|md)$/, '');
+            // 获取文件路径（去掉 content/notes/ 前缀和文件扩展名）
+            let filePath = file.replace(/^content\/notes\//, '');
+            // 去掉 /index.mdx 或 /index.md 后缀
+            filePath = filePath.replace(/\/index\.(mdx|md)$/, '');
+            // 去掉其他 .mdx 或 .md 扩展名
+            filePath = filePath.replace(/\.(mdx|md)$/, '');
             
             // 建立映射：slug 的最后一段 -> 文件路径
             const lastSlug = slugArray[slugArray.length - 1];

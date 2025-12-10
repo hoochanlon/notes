@@ -1,0 +1,9 @@
+{
+  "title": "Demo",
+  "root": true,
+  "pages": [
+    "index",
+    "---导航分类---",
+    "demo"
+  ]
+}
