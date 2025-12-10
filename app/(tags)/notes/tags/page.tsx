@@ -40,16 +40,9 @@ export default async function TagsPage() {
 
   return (
     <section className="w-full">
-      <h1 className="text-3xl font-semibold tracking-tight mb-8">所有标签</h1>
-      <div className="flex flex-wrap gap-3 mb-8">
-      <Link
-          href="/notes/essay"
-          className="inline-flex items-center gap-2 px-3 py-1.5 text-sm text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent/50 rounded-md transition-colors no-underline"
-        >
-          <i className="ri-booklet-line"></i>
-          返回备忘录
-        </Link>
-      </div>
+
+      <h1 className="text-3xl font-semibold tracking-tight mb-2">所有标签</h1>
+      <p className="text-fd-muted-foreground mb-8">浏览全部标签，快速跳转到相关笔记。</p>
       {sortedTags.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-fd-muted-foreground text-lg">暂无标签</p>
