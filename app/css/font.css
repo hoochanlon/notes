@@ -114,6 +114,10 @@ a.inline-flex[href="/"] {
   line-height: inherit;
 }
 
+.nav-title-link {
+  font-family: var(--font-quicksand), 'Quicksand', sans-serif;
+}
+
 /* 按钮样式 */
 button[aria-controls^="radix-"] {
   font-size: var(--base-size);
