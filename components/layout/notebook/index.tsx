@@ -352,7 +352,7 @@ function DocsNavbar({
           <Link
             href={nav.url ?? '/'}
             className={cn(
-              'nav-title-link inline-flex items-center gap-2.5 font-semibold',
+              // 'nav-title-link inline-flex items-center gap-2.5 font-semibold',
               navMode === 'auto' && 'md:hidden',
             )}
           >
