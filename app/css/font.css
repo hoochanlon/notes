@@ -114,12 +114,6 @@ button[aria-controls^="radix-"] {
   line-height: 1.8;
 }
 
-nav a[href="/memos/"] {
-  font-size: 24px;
-  font-family: var(--font-quicksand), 'Quicksand', 'Inter', 'Helvetica', sans-serif;
-  letter-spacing: 0.04em;
-}
-
 /* 目录特定样式 - 修正 */
 #nd-toc #toc-title,
 #nd-toc a {
