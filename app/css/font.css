@@ -167,16 +167,13 @@ button[aria-controls^="radix-"] {
 }
 
 
-.fd-header__brand {
-  font-family: 'quicksand';
-  letter-spacing: 0.04em;
-}
+
 
 /* 精确匹配整个class字符串 */
-/* a[class="inline-flex items-center gap-2.5 font-semibold"] {
+a[class="inline-flex items-center gap-2.5 font-semibold"] {
   font-family: 'quicksand';
   font-size: 20px;
-} */
+}
 
 
 /* 暗色模式支持 - 让原有系统处理 */
