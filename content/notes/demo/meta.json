@@ -2,8 +2,7 @@
   "title": "Demo",
   "root": true,
   "pages": [
-    "index",
-    "---分隔内容---",
+    "---这是分隔符效果---",
     "demo-1",
     "demo-2",
     "demo-3"

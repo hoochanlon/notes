@@ -43,9 +43,36 @@ h4 {
 }
 
 /* 段落样式 */
-p, span {
+li,p, span {
   font-size: var(--base-size);
   line-height: 1.8;
+}
+
+/* 列表缩进与层级间距 */
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.5rem;
+  margin-inline-start: 0.75rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ul ul {
+  list-style-type: circle;
+}
+
+.prose ul ul ul {
+  list-style-type: square;
+}
+
+.prose ul ul,
+.prose ol ol,
+.prose ul ol,
+.prose ol ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 /* 普通链接基础样式 - 完全简化，让原有样式系统工作 */
@@ -81,6 +108,12 @@ a.inline-flex[href="/"] {
   letter-spacing: 0.04em;
 }
 
+.site-footer a {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: inherit;
+}
+
 /* 按钮样式 */
 button[aria-controls^="radix-"] {
   font-size: var(--base-size);
@@ -104,6 +137,11 @@ nav a {
   /* 不设置颜色，让原有类名控制 */
   font-family: var(--font-noto-serif-sc), 'Noto Serif SC', '宋体', serif;
 }
+
+.site-footer * {
+  font-family: var(--font-quicksand), 'Quicksand', sans-serif !important;
+}
+
 
 /* 目录 */
 #toc-title:after {

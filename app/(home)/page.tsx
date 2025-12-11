@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/site-footer';
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* 英雄区域 */}
       <section className="flex flex-col items-center justify-center py-12 px-4 text-center flex-1">
         {/* 头像图片 */}
