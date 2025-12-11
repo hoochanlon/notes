@@ -40,18 +40,6 @@ jobs:
         run: pnpm build
         env:
           NODE_ENV: production
-          NEXT_PUBLIC_BASE_PATH: "/memos"
-
-      # 将导出结果放到 /memos 子目录，匹配 GitHub Pages 的访问路径
-      - name: Prepare artifact under /memos
-        run: |
-          shopt -s dotglob
-          mkdir -p out_memos/memos
-          mv out/* out_memos/memos/
-          # 保留 .nojekyll，避免下划线文件被 Jekyll 过滤
-          cp out_memos/memos/.nojekyll out_memos/.nojekyll || touch out_memos/.nojekyll
-          rm -rf out
-          mv out_memos out
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
