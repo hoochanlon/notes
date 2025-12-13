@@ -1,6 +1,11 @@
 :root {
-  --font-noto-serif-sc: 'Noto Sans SC', 'Songti SC', '宋体', serif;
+  --font-noto-serif-sc: 'OPPO Sans 4.0', sans-serif;
   --font-quicksand: 'Quicksand', 'Inter', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* 全局中文字体设置 */
+body {
+  font-family: var(--font-noto-serif-sc);
 }
 
 h1[class="text-3xl md:text-5xl font-bold tracking-tight text-gray-400 dark:text-gray-400"] {
@@ -125,7 +130,7 @@ button[aria-controls^="radix-"] {
   font-size: 16px;
   line-height: 1.8;
   /* 不设置颜色，让原有类名控制 */
-  font-family: var(--font-noto-serif-sc), 'Noto Serif SC', '宋体', serif;
+  font-family: var(--font-noto-serif-sc);
 }
 
 .site-footer * {

@@ -20,7 +20,7 @@ export default function HomePage() {
         >
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-border shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <Image
-              src="https://cdn.jsdelivr.net/gh/hoochanlon/picx-images-hosting@refs/heads/master/special/quan-ci-fang.png"
+              src="./avatar.png"
               alt="Hoochanlon"
               fill
               className="object-cover"
@@ -40,7 +40,7 @@ export default function HomePage() {
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-400 dark:text-gray-400">
             Hoochanlon's Memos
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-gray-400 dark:text-gray-500 leading-relaxed" style={{ fontFamily: "'Resource Han Rounded CN', sans-serif", fontSize: '24px', fontWeight: 300, letterSpacing: '0.02em' }}>
             个人备忘录：随笔、记录、归档。
           </p>
           
@@ -51,7 +51,8 @@ export default function HomePage() {
               href="https://hoochanlon.moe/"
               target="_blank"
               rel="noopener noreferrer"
-               className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              style={{ fontFamily: "'Resource Han Rounded CN', sans-serif", fontSize: '20px', fontWeight: 700, letterSpacing: '0.03em', color: 'rgb(156, 163, 175)' }}
               >
               <ExternalLink className="w-5 h-5" />
               个人主页
@@ -59,7 +60,8 @@ export default function HomePage() {
             
             <Link
               href="/notes/essay"
-              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground text-background rounded-lg font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-foreground rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+              style={{ fontFamily: "'Resource Han Rounded CN', sans-serif", fontSize: '20px', fontWeight: 700, letterSpacing: '0.03em', color: 'rgb(156, 163, 175)' }}
             >
               浏览内容
               <ArrowRight className="w-5 h-5" />

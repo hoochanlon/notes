@@ -32,6 +32,7 @@ export const siteLinks: SiteCategory[] = [
       createSite({
         name: 'grok',
         url: 'https://grok.com',
+        icon: '/icons/grok.svg',
         description: 'grok is a search engine that uses AI to answer questions and help you find information.',
       }),
     ],

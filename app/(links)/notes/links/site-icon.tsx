@@ -10,8 +10,10 @@ interface SiteIconProps {
 export function SiteIcon({ icon, name }: SiteIconProps) {
   const [imageError, setImageError] = useState(false);
 
-  // 如果是 URL，尝试显示图片
-  if ((icon.startsWith('http://') || icon.startsWith('https://')) && !imageError) {
+  // 如果是 URL 或本地路径（以 / 开头），尝试显示图片
+  const isImageUrl = icon.startsWith('http://') || icon.startsWith('https://') || icon.startsWith('/');
+  
+  if (isImageUrl && !imageError) {
     return (
       <img
         src={icon}
