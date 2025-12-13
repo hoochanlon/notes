@@ -2,7 +2,7 @@ import { source } from '@/lib/source';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SiteFooter } from '@/components/site-footer';
-import { CalendarDays, Tag as TagIcon, FileText } from 'lucide-react';
+import { CalendarDays, Tag as TagIcon, FileText, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '笔记归档',
@@ -82,6 +82,13 @@ export default function NotesArchivePage() {
             >
               <TagIcon className="w-4 h-4" />
               查看所有标签
+            </Link>
+            <Link
+              href="/notes/links"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-md border border-fd-border bg-fd-card text-fd-foreground hover:border-fd-primary hover:bg-fd-primary/5 transition-colors"
+            >
+              <Globe className="w-4 h-4" />
+              查看网站导航
             </Link>
           </div>
         </div>
