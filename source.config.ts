@@ -25,6 +25,10 @@ const slugSchema = z.object({
   editOnGitHub: z.boolean().optional(),
   // 标签：可以是字符串数组或单个字符串
   tags: z.union([z.array(z.string()), z.string()]).optional(),
+  // 密码：用于加密文章内容，可以是明文或 base64 编码
+  password: z.string().optional(),
+  // 密码提示：显示在密码输入界面，用于提示读者密码
+  passwordHint: z.string().optional(),
 });
 const customFrontmatterSchema = frontmatterSchema.merge(slugSchema);
 
